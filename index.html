@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      .card {
+        display: flex;
+        font-family: sans-serif;
+        font-size: 14px;
+        width: 90vw;
+        background-color: rgba(241, 240, 240, 0.774);
+        border: 2px solid rgb(13, 1, 1);
+        justify-content: center;
+        padding: 10px;
+        margin: auto;
+        align-items: center;
+        gap: 10px;
+        /* flex-wrap: wrap; */
+      }
+
+      .left img {
+        border-radius: 8px;
+      }
+
+      .left {
+        position: relative;
+      }
+
+      .right {
+        display: flex;
+        flex-direction: column;
+        height: 100px;
+        gap: 8px;
+      }
+
+      .right > * {
+        padding-top: 5px;
+      }
+
+      .heading {
+        font-weight: bolder;
+      }
+
+      .details {
+        font-weight: lighter;
+        font-size: 13px;
+        color: gray;
+      }
+
+      .duration {
+        padding: 6px;
+        color: white;
+        font-weight: bold;
+        border-radius: 6px;
+        background-color: rgba(10, 7, 7, 0.401);
+        position: absolute;
+        bottom: 5px;
+        right: 5px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="card">
+        <div class="left">
+          <img
+            src="https://i.ytimg.com/vi/VELNPK0dK84/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLARdokesrwglK7lm8sTgXJ-D4R_7g"
+          />
+          <span class="duration"> 35:10 </span>
+        </div>
+        <div class="right">
+          <div class="heading">
+            Installing VS Code & How Websites Work | Sigma Web Development
+            Course - Tutorial #1
+          </div>
+          <div class="details">
+            <span class="channel"> CodeWithHarry • </span>
+            <span class="views"> 727K views • </span>
+            <span class="monthOld"> 2 months ago </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="script.js"></script>
+</html>
