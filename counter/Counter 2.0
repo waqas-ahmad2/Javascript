@@ -1,0 +1,50 @@
+let timerInterval; //= setInterval(sec,1000)
+var secs = 0
+var min = 0
+var hours = 0
+
+function sec(){
+  secs += 1
+  
+  if(secs>=60){
+    min += 1
+    secs=0
+  }
+  
+  if(min>=60){
+    hours+=1
+    min = 0
+  }
+  
+  const fhours = hours<10 ? "0"+hours:hours
+  const fmin = min<10 ? "0" +min:min
+  const fsecs =secs<10 ? "0" + secs:secs
+  
+  document.getElementById('demo').innerHTML = `${fhours}:${fmin}:${fsecs}`
+
+}
+  
+
+function startTimer() {
+    if (!timerInterval) {
+        timerInterval = setInterval(sec, 1000);
+    }
+}
+
+function stopTimer() {
+    if(timerInterval){
+      clearInterval(timerInterval);
+      timerInterval = null;
+    }
+}
+
+function resetTimer(){
+  secs = "00"
+  min = "00" 
+  hours = "00"
+  stopTimer()
+  
+  document.getElementById('demo').innerHTML = `${hours}:${min}:${secs}`
+
+}
+
