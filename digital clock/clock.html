@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <style>
+       @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+}
+
+h1 {
+    color: #ffffff;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+#clock {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 300px;
+    height: 150px;
+    gap: 15px;
+    padding: 20px;
+    border-radius: 10px;
+    background: rgba(247, 244, 244, 0.53);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.item {
+    font-family: 'Orbitron', sans-serif;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    text-align: center;
+    align-content: center;
+    color: rgba(25, 1, 7, 0.845);
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    animation: glow 1.5s infinite alternate;
+}
+
+
+
+#date {
+    grid-column: span 3;
+    font-size: 1.2rem;
+    padding-top: 10px;
+}
+
+@keyframes glow {
+    from {
+        box-shadow: 0 0 10px #e6383e, 0 0 20px #fad0c4;
+    }
+    to {
+        box-shadow: 0 0 20px #de989a, 0 0 30px #fad0c4;
+    }
+}
+    </style>
+</head>
+<body>
+    <h1>Digital Clock 24-hrs format</h1>
+
+    <div id = 'clock'>
+        <div id="hours" class="item"></div>
+        <div id="minutes" class="item"></div>
+        <div id="seconds" class="item"></div>
+        <div id="date" class="item"></div>
+    </div>
+
+<script>
+
+    let text_hour = document.getElementById('hours')
+    let text_minute = document.getElementById('minutes')
+    let text_second = document.getElementById('seconds')
+    let text_date = document.getElementById('date')
+
+    function clock(){
+        let now = new Date()
+
+        let hours = now.getHours()
+        let minutes = now.getMinutes()
+        let seconds = now.getSeconds()
+        let month = now.toLocaleString('default',{month:"long"})
+        let date = now.getDate()
+        let year = now.getFullYear()
+
+        formatted_hours = hours<10 ? "0" + hours : hours
+        formatted_minutes = minutes<10 ? "0" + minutes : minutes
+        formatted_seconds = seconds<10 ? "0" + seconds : seconds
+        formatted_date = `${date} - ${month} - ${year}`
+
+        text_hour.innerHTML = formatted_hours
+        text_minute.innerHTML = formatted_minutes
+        text_second.innerHTML = formatted_seconds
+        text_date.innerHTML = formatted_date
+
+    }
+
+    setInterval(clock,1000)
+
+
+</script>
+</body>
+</html>
