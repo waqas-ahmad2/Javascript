@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  
+    <title>Hello, World!</title>
+    <link rel="stylesheet" href="styles.css" />
+
+    
+  <script>
+  document.addEventListener('DOMContentLoaded',()=>{
+    let type = document.querySelector('#task')
+    let form = document.querySelector('form')
+    let btn = document.querySelector('#submit')
+    
+    //Disable the button initially
+    btn.disabled = true
+    
+    type.onkeyup = ()=>{
+      if(type.value.trim() !== ''){
+        btn.disabled = false
+      }
+      else{
+        btn.disabled = true
+      }
+    }
+    
+    
+    form.onsubmit = ()=>{
+      
+      let li = document.createElement('li')
+      let text = document.createElement('span')
+      text.innerHTML = type.value
+      
+      let edit = document.createElement('button')
+      edit.innerHTML = 'edit'
+      edit.onclick = () => editTask(li,text)
+      
+      let del = document.createElement('button')
+      del.innerHTML = 'delete'
+      del.onclick = ()=>li.remove(type.value)
+      
+      
+      li.append(text)
+      li.append(edit)
+      li.append(del)
+      document.querySelector("#tasks").append(li)
+    
+      type.value = ''
+      btn.disabled=true
+      
+      return false
+     }
+     
+    function editTask(li,text){
+      let newtask = prompt('edit text',text.innerHTML)
+      if(newtask !== null && newtask.trim() !==''){
+      text.textContent = newtask
+      }
+    }
+     
+     
+   })
+   
+  </script>
+  
+  <style>
+      /* General styling */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      h1 {
+        text-align: center;
+        color: #555;
+        margin-bottom: 20px;
+      }
+
+      form {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      input[type="text"] {
+        width: 60%;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        margin-right: 10px;
+        font-size: 16px;
+      }
+
+      input[type="submit"] {
+        padding: 10px 20px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      input[type="submit"]:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+      }
+
+      ul {
+        list-style-type: none;
+        padding: 0;
+        width: 80%;
+        max-width: 600px;
+        margin: auto;
+      }
+
+      li {
+        background-color: white;
+        margin: 10px 0;
+        padding: 15px;
+        border-radius: 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        max-width: 100%;
+      }
+
+      li span {
+        flex-grow: 2;
+        margin-left: 20px;
+        font-size: 16px;
+        max-width: 100%;
+      }
+
+      button {
+        background-color: #007bff;
+        border: none;
+        color: white;
+        padding: 8px 12px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-left: 10px;
+        font-size: 14px;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      button.delete {
+        background-color: #dc3545;
+      }
+
+      button.delete:hover {
+        background-color: #c82333;
+      }
+    </style>
+
+  
+  </head>
+  <body>
+  
+  <h1>Tasks</h1>
+  
+  <form>
+    <input id="task" type='text' placeholder="Enter Tasks">
+    <input id='submit' value="Submit" type='submit'>
+  </form>
+  
+  <ul id='tasks'>
+  </ul>
+  
+  </body>
+</html>
